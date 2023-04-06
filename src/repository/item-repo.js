@@ -10,9 +10,9 @@ class ItemRepo {
             return error;
         }
     }
-    async getAll(){
+    async getAll(data){
       try {
-        const items=await Item.find();
+        const items=await Item.find(data);
         return items;
       } catch (error) {
         return error;
