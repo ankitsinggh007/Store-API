@@ -4,15 +4,7 @@ const itemservice = new itemService();
 
 const getAllItems = async (req, res) => {
   try {
-    const { name, company, rating, featured } = req.query;
-
-    
-    const response = await itemservice.getAll(req.query);
-
-    // if(name){
-        
-    // }
-    
+    const response = await itemservice.getAll(req.query);    
     return res.status(200).json({
       success: true,
       message: "all data has been fetched",

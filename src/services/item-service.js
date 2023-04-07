@@ -7,7 +7,14 @@ class itemService{
     }
     async getAll(data){
         try {
-            const items=await this.itemRepo.getAll(data);
+            const {featured,name,company,sort,fields,pages}=data;
+            const reqObj={};
+            if(featured) reqObj.featured=featured;
+            
+            if(company)  reqObj.company=company;
+            
+            if(name) reqObj.name={ $regex: name, $options: 'i' } ;
+            const items=await this.itemRepo.getAll({reqObj,sort,fields,pages})
             return items;
           } catch (error) {
             return error;
